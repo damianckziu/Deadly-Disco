@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Deadly Disco"
-run/main_scene="uid://b2fb2kgp11om6"
+run/main_scene="uid://d207p64aysb6j"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://delqvfvknvkel"
 
 [autoload]
 

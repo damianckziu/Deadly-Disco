@@ -4,6 +4,7 @@ var speed = 150
 var velocity = Vector2()
 
 var bullet = preload("res://bullet.tscn")
+var blood_particles = preload("res://blood_particles.tscn")
 
 var can_shoot = true
 var is_dead = false
@@ -38,5 +39,11 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemy"):
 		is_dead = true
 		visible = false
+		
+		if Global.node_creation_parent != null:
+			var blood = Global.instance_node(blood_particles, global_position, Global.node_creation_parent)
+			blood.color = Color("004a8ddd")
+			blood.rotation = velocity.angle()
+		
 		await get_tree().create_timer(1).timeout
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://game_over.tscn")
